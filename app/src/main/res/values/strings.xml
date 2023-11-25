@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">RUP</string>
+    <string name="account_label">"너P야"</string>
+    <string name="account_type">"com.rup.auth.login"</string>
+    <string name="title_activity_login">LoginActivity</string>
     <string name="logo_image">logo_image</string>
     <string name="profile_image">profile_image</string>
     <string name="late_fee">지각비</string>

@@ -49,10 +49,6 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding> : BottomSheetDialogFrag
         binding = bindingInflater.invoke(layoutInflater)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
     open fun moveIntent(activity: Class<*>) {
         val intent = Intent(getActivity(), activity)
         startActivity(intent)
