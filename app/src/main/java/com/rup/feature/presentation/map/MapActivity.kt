@@ -1,6 +1,5 @@
 package com.rup.feature.presentation.map
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -23,7 +22,6 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
     override fun setup() {
         intent.getSerializableExtra(StartArgs.key, StartArgs::class.java)?.let { reservationId ->
-            Log.d("LOGEE", "setup: $reservationId")
             viewModel.setReservationId(reservationId.id)
         } ?: {
             backScreen()
