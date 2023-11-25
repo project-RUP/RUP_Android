@@ -1,7 +1,9 @@
-package com.rup.network
+package com.rup.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.rup.network.CoreData
+import com.rup.network.RetrofitClient
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,30 +20,14 @@ object AppModule {
         .setLenient()
         .create()
 
-    private val authInterceptor = Interceptor { chain ->
-        val originalRequest = chain.request()
-        val token : String? = CoreData.ACCESSTOKEN
-
-        val modifiedRequest = originalRequest.newBuilder()
-            .header("Authorization", "Bearer $token")
-            .build()
-        chain.proceed(modifiedRequest)
-    }
-
     private fun getRetrofit():Retrofit{
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY // 요청 및 응답 바디를 포함한 모든 정보를 로그로 출력
         }
 
-        val httpClient = OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
-            .addInterceptor(loggingInterceptor)
-            .build()
-
         return Retrofit.Builder()
             .baseUrl(CoreData.BASE_SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(httpClient)
             .build()
     }
 
