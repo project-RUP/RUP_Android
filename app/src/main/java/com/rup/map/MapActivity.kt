@@ -4,15 +4,21 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
 
 class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override val bindingInflater: (LayoutInflater) -> ActivityMapBinding
         get() = ActivityMapBinding::inflate
 
     override fun setup() {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         binding.expandIcon.setOnClickListener {
             if (binding.expandedMenu.visibility == View.VISIBLE) {
                 binding.expandedMenu.visibility =
