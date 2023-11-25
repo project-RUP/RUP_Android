@@ -7,4 +7,5 @@
     <string name="profile_image">profile_image</string>
     <string name="late_fee">지각비</string>
     <string name="verification_code">인증코드</string>
+    <string name="total_late_fee">총 지각비 :</string>
 </resources>
