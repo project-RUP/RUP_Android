@@ -1,18 +1,18 @@
-package com.rup.map
+package com.rup.feature.presentation.map
 
 import androidx.lifecycle.MutableLiveData
 import com.rup.core.base.BaseViewModel
-import com.rup.map.model.MapMarker
+import com.rup.feature.presentation.map.model.MapMarker
 
 class MapViewModel: BaseViewModel() {
 
     var previousMapMarker = emptyList<MapMarker>()
+
     private val _mapMakers = MutableLiveData(emptyList<MapMarker>())
     val mapMarker get() = _mapMakers
 
-
     fun setMapMarker(){
-        _mapMakers.value = listOf(
+        val newMapMarkers = listOf(
             MapMarker(
                 37.5670135, 126.9783740
             ),
@@ -21,7 +21,11 @@ class MapViewModel: BaseViewModel() {
             ),
             MapMarker(
                 37.5570135, 126.9683740
+            ),
+            MapMarker(
+                37.2570135, 126.7683740
             )
         )
+        _mapMakers.value = newMapMarkers
     }
 }

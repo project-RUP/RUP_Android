@@ -1,11 +1,10 @@
-package com.rup.map.model
+package com.rup.feature.presentation.map.model
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
@@ -41,4 +40,8 @@ data class MapMarker(
     fun removeMapMarker(){
         marker.map = null
     }
+
+
 }
+
+fun MapMarker.toLatLng() = LatLng(this.lat, this.lng)
