@@ -1,11 +1,17 @@
 package com.rup.feature.presentation.map
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.location.Location
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.naver.maps.geometry.LatLng
 import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.CameraUpdate
 import com.rup.core.base.BaseBindingActivity
@@ -39,8 +45,23 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
         setNaverMap()
 
-        // FIXME: 마커 호출 코드로 변경
-        viewModel.setMapMarker()
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                location?.toLatLng()?.let { viewModel.setMapMarker(it) }
+            }
+
+
     }
 
     private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
@@ -48,23 +69,23 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
         viewModel.mapMarker.map {
             viewModel.previousMapMarker to it
         }.observe(this) { (previousMapMarker, currentMarker) ->
+            Log.d("LOGEE", "setNaverMap:currentMarker $currentMarker")
             previousMapMarker.forEach {
                 it.removeMapMarker()
             }
-
             currentMarker.forEach {
                 it.build(this, naverMap)
             }
-
-            CameraUpdate.fitBounds(
-                LatLngBounds.from(
-                    currentMarker.map { it.toLatLng() }
-                ),
-                100
-            ).let {
-                naverMap.moveCamera(it)
+            if (currentMarker.isNotEmpty()) {
+                CameraUpdate.fitBounds(
+                    LatLngBounds.from(
+                        currentMarker.map { it.toLatLng() }
+                    ),
+                    100
+                ).let {
+                    naverMap.moveCamera(it)
+                }
             }
-
         }
     }
 
@@ -80,3 +101,8 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
         }
     }
 }
+
+fun Location.toLatLng() = LatLng(
+    this.latitude,
+    this.longitude,
+)

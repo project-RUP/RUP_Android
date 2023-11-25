@@ -1,10 +1,18 @@
 package com.rup.feature.presentation.map
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.naver.maps.geometry.LatLng
 import com.rup.core.base.BaseViewModel
+import com.rup.di.AppModule.gson
 import com.rup.feature.data.remote.MapApi
+import com.rup.feature.data.remote.dto.map.MapApResult
+import com.rup.feature.data.remote.dto.map.MapApiPram
+import com.rup.feature.data.remote.dto.user.LoginRes
 import com.rup.feature.presentation.map.model.MapMarker
 import com.rup.network.NetworkModule
+import kotlinx.coroutines.launch
 
 class MapViewModel: BaseViewModel() {
 
@@ -14,25 +22,23 @@ class MapViewModel: BaseViewModel() {
     private val _mapMakers = MutableLiveData(emptyList<MapMarker>())
     val mapMarker get() = _mapMakers
 
-    private val remote = NetworkModule.getRetrofit().create(MapApi::class.java)
+    private val remote by lazy {
+        NetworkModule.getRetrofit().create(MapApi::class.java)
+    }
 
-    fun setMapMarker(){
-        remote.promisesLocations("2")
-        val newMapMarkers = listOf(
-            MapMarker(
-                37.5670135, 126.9783740
-            ),
-            MapMarker(
-                37.5670135, 126.9883740
-            ),
-            MapMarker(
-                37.5570135, 126.9683740
-            ),
-            MapMarker(
-                37.2570135, 126.7683740
+    fun setMapMarker(latLng: LatLng){
+        viewModelScope.launch {
+            val newMapMarkersJson = remote.promisesLocations(
+                "2",
+                MapApiPram(
+                    latLng.longitude.toString(),
+                    latLng.latitude.toString(),
+                )
             )
-        )
-        _mapMakers.value = newMapMarkers
+            Log.d("LOGEE", "setMapMarker: $newMapMarkersJson")
+            val newMapMarkers = gson.fromJson(newMapMarkersJson, MapApResult::class.java)
+            _mapMakers.value = newMapMarkers.getMarkers()
+        }
     }
 
     fun setReservationId(id: String){
