@@ -27,4 +27,5 @@ class LoginViewModel : BaseViewModel() {
         val token = jsonObject.get("result")?.asString
         AccountHelper.setAuthToken(token)
     }
+
 }

@@ -11,6 +11,7 @@ import com.rup.feature.presentation.MainPage.MyPageActivity
 import com.rup.feature.presentation.map.MapActivity
 import com.rup.feature.presentation.point.PointActivity
 
+
 class MainPageActivity : BaseBindingActivity<ActivityMainPageBinding, MainPageViewModel>(), OnItemClickListener {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainPageBinding = ActivityMainPageBinding::inflate
