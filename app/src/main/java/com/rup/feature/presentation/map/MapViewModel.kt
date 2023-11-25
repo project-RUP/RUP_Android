@@ -2,7 +2,9 @@ package com.rup.feature.presentation.map
 
 import androidx.lifecycle.MutableLiveData
 import com.rup.core.base.BaseViewModel
+import com.rup.feature.data.remote.MapApi
 import com.rup.feature.presentation.map.model.MapMarker
+import com.rup.network.NetworkModule
 
 class MapViewModel: BaseViewModel() {
 
@@ -12,7 +14,10 @@ class MapViewModel: BaseViewModel() {
     private val _mapMakers = MutableLiveData(emptyList<MapMarker>())
     val mapMarker get() = _mapMakers
 
+    private val remote = NetworkModule.getRetrofit().create(MapApi::class.java)
+
     fun setMapMarker(){
+        remote.promisesLocations("2")
         val newMapMarkers = listOf(
             MapMarker(
                 37.5670135, 126.9783740
