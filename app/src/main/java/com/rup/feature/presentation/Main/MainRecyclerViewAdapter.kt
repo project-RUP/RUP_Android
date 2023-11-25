@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rup.databinding.ItemMainBinding
 import com.rup.feature.presentation.Main.model.maindto
 interface OnItemClickListener {
-    fun onItemClick(position: Int)
+    fun onItemClick(position: maindto)
 }
 class MainRecyclerViewAdapter(private val listener: OnItemClickListener,private var items: List<maindto>) : RecyclerView.Adapter<MainRecyclerViewAdapter.MainPageViewHolder>() {
 
@@ -31,7 +31,7 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener,private 
             price.text = item.price
 
             root.setOnClickListener {
-                listener.onItemClick(position)
+                listener.onItemClick(item)
             }
         }
     }
