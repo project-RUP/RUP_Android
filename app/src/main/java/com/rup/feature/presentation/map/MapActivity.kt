@@ -1,11 +1,15 @@
-package com.rup.map
+package com.rup.feature.presentation.map
 
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.map
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraAnimation
+import com.naver.maps.map.CameraUpdate
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
 
@@ -31,6 +35,13 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
             }
         }
 
+        setNaverMap()
+
+        // FIXME: 마커 호출 코드로 변경
+        viewModel.setMapMarker()
+    }
+
+    private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
         viewModel.mapMarker
             .map {
                 viewModel.previousMapMarker to it
@@ -40,13 +51,24 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
                 previousMapMarker.forEach {
                     it.removeMapMarker()
                 }
-                binding.map.getMapAsync { naverMap ->
-                    currentMarker.forEach {
-                        it.build(this, naverMap)
-                    }
+
+                currentMarker.forEach {
+                    it.build(this, naverMap)
+                }
+
+            }
+
+        viewModel.cameraAnnotation
+            .distinctUntilChanged()
+            .observe(this) {
+                it?.let { latLng ->
+                    CameraUpdate.scrollTo(latLng)
+                        .animate(CameraAnimation.Easing, 500)
+                        .let { cameraUpdate ->
+                            naverMap.moveCamera(cameraUpdate)
+                        }
                 }
             }
-        viewModel.setMapMarker()
     }
 
     override val viewModel: MapViewModel
