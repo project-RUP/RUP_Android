@@ -9,7 +9,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object AppModule {
-    var retrofitClient : Retrofit? = null
+
+    private val retrofitClient: RetrofitClient by lazy {
+        getRetrofit().create(RetrofitClient::class.java)
+    }
 
     val gson : Gson = GsonBuilder()
         .setLenient()
@@ -24,12 +27,6 @@ object AppModule {
             .build()
         chain.proceed(modifiedRequest)
     }
-    fun providerRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(CoreData.BASE_SERVER_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
 
     private fun getRetrofit():Retrofit{
         val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -49,8 +46,7 @@ object AppModule {
     }
 
     fun getApiService(): RetrofitClient {
-        return getRetrofit().create(RetrofitClient::class.java)
+        return retrofitClient
     }
-
 
 }
