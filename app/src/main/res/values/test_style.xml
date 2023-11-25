@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextStyle">
+        <item name="fontFamily">@font/text</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="TextStyle.h1">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontWeight">800</item>
+    </style>
+    <style name="TextStyle.h2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontWeight">600</item>
+    </style>
+    <style name="TextStyle.h3">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontWeight">600</item>
+    </style>
+    <style name="TextStyle.sh1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="TextStyle.body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    <style name="TextStyle.label1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontWeight">700</item>
+    </style>
+</resources>
