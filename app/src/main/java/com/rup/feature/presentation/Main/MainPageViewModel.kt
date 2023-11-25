@@ -18,36 +18,13 @@ class MainPageViewModel : BaseViewModel() {
     // Set Maindto list
     private fun setMaindtos() {
         _Maindtos.value = listOf(
-            maindto(
-                "dummyId",
-                "title1",
-                "subscription1",
-                "time1",
-                "amPm1",
-                "headCount1",
-                "location1",
-                "price1"
-            ),
-            maindto(
-                "dummyId",
-                "title2",
-                "subscription2",
-                "time2",
-                "amPm2",
-                "headCount2",
-                "location2",
-                "price2"
-            ),
-            maindto(
-                "dummyId",
-                "title3",
-                "subscription3",
-                "time3",
-                "amPm3",
-                "headCount3",
-                "location3",
-                "price3"
-            )
+
+            maindto("김민지와 아이들", "2023.11.30", "7:00", "PM", "headCount1", "종로", "price1"),
+            maindto("삼겹살 모임", "2023.12.15", "5:00", "PM", "headCount2", "강남", "price3") ,
+            maindto("풋살 ", "2023.12.19", "1:00", "PM", "headCount2", "강남", "price3")
+
+
+       
         )
     }
 }
