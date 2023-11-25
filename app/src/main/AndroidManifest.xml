@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -21,19 +20,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP">
-
         <activity
-            android:name=".feature.presentation.map.MapActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".feature.presentation.MainPage.MyPageActivity"
+            android:exported="true" >   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
 
         <activity
-            android:name=".map.MapActivity"
+            android:name=".feature.presentation.map.MapActivity"
             android:exported="false">
+
         </activity>
 
         <activity
@@ -58,7 +56,6 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="dnoqf0zo8y" />
-
     </application>
 
 </manifest>
