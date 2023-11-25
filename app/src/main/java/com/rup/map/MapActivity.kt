@@ -23,7 +23,7 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
                 }
                 binding.map.getMapAsync { naverMap ->
                     currentMarker.forEach {
-                        it.build(naverMap)
+                        it.build(this, naverMap)
                     }
                 }
             }
