@@ -21,25 +21,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP">
         <activity
+            android:name=".feature.presentation.Main.MakingAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Coin.CoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Promise.PromiseActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.presentation.MainPage.MyPageActivity"
-            android:exported="true" >   <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.map.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Main.MainPageActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".feature.presentation.map.MapActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".feature.presentation.map.MapActivity"
-            android:exported="false"/>
         <activity
             android:name=".core.base.BaseActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <service
             android:name=".core.util.AuthenticatorService"
             android:exported="false">
