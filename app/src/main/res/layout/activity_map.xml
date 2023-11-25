@@ -5,85 +5,182 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:background="@drawable/bottom_radius_20"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="11dp"
+        android:paddingBottom="11dp">
 
         <ImageView
             android:id="@+id/logo_image"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
             android:contentDescription="@string/logo_image"
+            android:src="@drawable/arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:contentDescription="@string/profile_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="1" />
+
+        <TextView
+            style="@style/TextStyle.label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/delete_reservation"
+            android:textColor="@color/key_red" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/divider" />
+
+        <TextView
+            style="@style/TextStyle.label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="24dp"
+            android:text="@string/modifier"
+            android:textColor="@color/black09" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/title1"
+        style="@style/TextStyle.h3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="15dp"
         android:text="00일정에"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/logo_image" />
 
-    <TextView
-        android:id="@+id/title2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="ㅇ일 ㅇ시간 ㅇ분 남았습니다"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/title1" />
+        android:orientation="horizontal">
 
-    <Button
+        <TextView
+            android:id="@+id/title2"
+            style="@style/TextStyle.h1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:text="ㅇ일 ㅇ시간 ㅇ분"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/title1" />
+
+        <TextView
+            android:id="@+id/title3"
+            style="@style/TextStyle.h3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="3dp"
+            android:text="남았습니다" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/late_fee_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginStart="23dp"
         android:layout_marginTop="10dp"
-        android:text="@string/late_fee"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/map_menu_late_fee_background"
         android:textSize="19sp"
-        app:layout_constraintTop_toBottomOf="@id/title2" />
+        app:layout_constraintTop_toBottomOf="@id/title2">
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        app:layout_constraintTop_toBottomOf="@id/late_fee_button" />
+        <TextView
+            style="@style/TextStyle.h3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="7dp"
+            android:text="@string/total_late_fee"
+            android:textColor="@color/black00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/late_fee_text"
+            style="@style/TextStyle.h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="7dp"
+            android:text="5000"
+            android:textColor="@color/black10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/late_fee_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/late_fee_icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="7dp"
+            android:src="@drawable/monetization"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/expanded_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/late_fee_button" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp">
 
             <TextView
                 android:id="@+id/date"
+                style="@style/TextStyle.body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="날짜"
+                android:layout_marginStart="25dp"
+                android:drawableTint="@color/green02"
+                android:text="2023.11.25"
+                android:textColor="@color/black09"
                 android:textSize="19sp"
+                app:drawableStartCompat="@drawable/calendar_today"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider" />
 
@@ -91,47 +188,89 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시간"
+                android:layout_marginStart="6dp"
+                android:drawableTint="@color/green02"
+                android:text="12:20 PM"
                 android:textSize="19sp"
+                app:drawableStartCompat="@drawable/schedule"
                 app:layout_constraintStart_toEndOf="@id/date"
                 app:layout_constraintTop_toBottomOf="@id/divider" />
-        </LinearLayout>
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.rup.core.view.AvatarView
+                    android:id="@+id/avatar1"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="26dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar_counter_text"
+                    app:layout_constraintEnd_toEndOf="@id/avatar1"
+                    app:layout_constraintTop_toTopOf="@id/avatar_counter_text" />
+
+                <com.rup.core.view.AvatarView
+                    android:id="@+id/avatar2"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="26dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar_counter_text"
+                    app:layout_constraintEnd_toEndOf="@id/avatar3"
+                    app:layout_constraintTop_toTopOf="@id/avatar_counter_text" />
+
+                <com.rup.core.view.AvatarView
+                    android:id="@+id/avatar3"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar_counter_text"
+                    app:layout_constraintEnd_toStartOf="@id/avatar_counter_text"
+                    app:layout_constraintTop_toTopOf="@id/avatar_counter_text" />
+
+                <TextView
+                    android:id="@+id/avatar_counter_text"
+                    style="@style/TextStyle.body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+5"
+                    android:textColor="@color/black09"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="장소"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="17dp"
+            android:drawableTint="@color/green02"
+            android:text="분당구 분당동 서현1로"
             android:textSize="19sp"
+            app:drawableStartCompat="@drawable/place"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/date" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/users"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toEndOf="@id/time"
-            app:layout_constraintTop_toTopOf="@id/date" />
-
-        <Button
+        <TextView
             android:id="@+id/verification_code"
+            style="@style/TextStyle.label1"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="@string/verification_code"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/radius_100_black02"
+            android:gravity="center"
+            android:text="XX3DLJ3( 인증코드 )"
+            android:textColor="@color/black08"
             app:layout_constraintTop_toBottomOf="@id/place" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/expand_icon"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        app:layout_constraintTop_toBottomOf="@id/verification_code" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -144,13 +283,52 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/find_friend_location"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="친구위치 검색"
+        <LinearLayout
+            android:id="@+id/find_friend_location_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/radius_100_dummyblack"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/find_friend_location"
+                style="@style/TextStyle.body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="13dp"
+                android:paddingTop="13dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="13dp"
+                android:text="친구위치 검색"
+                android:textColor="@color/black00" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/baseline_add_24" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_radius_20"
+            android:paddingTop="15dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/expand_icon"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_back_ios_black_24dp" />
+        </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

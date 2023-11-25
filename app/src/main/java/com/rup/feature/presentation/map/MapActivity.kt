@@ -27,14 +27,13 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
             backScreen()
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         binding.expandIcon.setOnClickListener {
             if (binding.expandedMenu.visibility == View.VISIBLE) {
                 binding.expandedMenu.visibility = View.GONE
-                binding.expandIcon.animate().setDuration(200).rotation(180f)
+                binding.expandIcon.animate().setDuration(200).rotation(0f)
             } else {
                 binding.expandedMenu.visibility = View.VISIBLE
-                binding.expandIcon.animate().setDuration(200).rotation(0f)
+                binding.expandIcon.animate().setDuration(200).rotation(180f)
             }
         }
 
@@ -45,6 +44,7 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
     }
 
     private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
+        naverMap.uiSettings.isZoomControlEnabled = false
         viewModel.mapMarker.map {
             viewModel.previousMapMarker to it
         }.observe(this) { (previousMapMarker, currentMarker) ->

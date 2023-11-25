@@ -19,4 +19,8 @@
     <color name="green01">#4BA887</color>
     <color name="green02">#64E9B9</color>
     <color name="green03">#A4FBD1</color>
+
+    <color name="key_red">#F64872</color>
+
+    <color name="dummy_black">#737373</color>
 </resources>
