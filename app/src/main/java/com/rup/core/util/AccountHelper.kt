@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.rup.feature.presentation.login.LoginActivity
 import java.util.concurrent.TimeUnit
 
 object AccountHelper {
@@ -51,7 +52,7 @@ object AccountHelper {
     /**
      * 인증 토큰 요청하기
      * */
-    fun getAuthToken(activity: Activity): String? {
+    fun getAuthToken(): String? {
         val accounts: Array<out Account>? = getMyAccounts()
         val account = accounts?.get(0)
         if (account != null) {
@@ -64,7 +65,7 @@ object AccountHelper {
                     account,
                     account.type,
                     Bundle(),
-                    activity,
+                    true,
                     OnTokenAcquired(),
                     null
                 )
