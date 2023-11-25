@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.RUP" parent="Base.Theme.RUP" />
+
+    <style name="EditTextTheme" parent="Widget.AppCompat.EditText">
+        <item name="colorAccent">@color/green02</item>
+    </style>
 </resources>

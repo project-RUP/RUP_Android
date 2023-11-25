@@ -6,35 +6,62 @@
 
     <TextView
         android:id="@+id/point"
+        style="@style/TextStyle.h2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:text="+1000"
+        android:textColor="@color/black10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/reservation_name"
+        style="@style/TextStyle.sh1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="28dp"
         android:text="약속명"
+        android:textColor="@color/black10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/date"
+        style="@style/TextStyle.body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="26dp"
+        android:text="2023.11.25 "
+        android:textColor="@color/green01"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/point" />
 
     <View
         android:id="@+id/dummy"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/date"
+        app:layout_constraintEnd_toStartOf="@id/time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1" />
 
-
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/time"
+        style="@style/TextStyle.body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="26dp"
         android:text="2023.11.25 "
+        android:textColor="@color/black07"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/divider"
         app:layout_constraintStart_toEndOf="@id/dummy"
         app:layout_constraintTop_toBottomOf="@id/reservation_name" />
@@ -42,18 +69,24 @@
     <View
         android:id="@+id/divider"
         android:layout_width="1dp"
-        android:layout_height="0dp"
+        android:layout_height="16dp"
         android:background="@color/divider"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="@id/place"
         app:layout_constraintEnd_toStartOf="@id/place"
-        app:layout_constraintStart_toEndOf="@id/date"
+        app:layout_constraintStart_toEndOf="@id/time"
         app:layout_constraintTop_toTopOf="@id/place" />
 
     <TextView
         android:id="@+id/place"
+        style="@style/TextStyle.body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="장소"
+        android:textColor="@color/black07"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintTop_toTopOf="@id/time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reservation_name" />
 
