@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMainBinding
+import com.rup.feature.presentation.Main.MainRecyclerViewAdapter
+import com.rup.feature.presentation.Main.model.maindto
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -16,4 +18,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
     override fun setup() {
 
     }
+
+
 }
