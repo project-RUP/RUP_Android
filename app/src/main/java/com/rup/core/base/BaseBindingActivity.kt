@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 import com.rup.feature.presentation.dialogs.LoadingDialog
 
 
-abstract class BaseBindingActivity<VB : ViewBinding, VM : BaseViewModel>() : BaseActivity() {
+abstract class BaseBindingActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivity() {
 
     private var _binding: ViewBinding? = null
     abstract val bindingInflater: (LayoutInflater) -> VB
