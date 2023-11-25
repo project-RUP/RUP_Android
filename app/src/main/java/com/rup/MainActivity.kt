@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMainBinding
-import com.rup.network.AppModule
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
 
