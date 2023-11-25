@@ -51,11 +51,6 @@
             android:theme="@style/Theme.RUP"/>
 
         <activity
-            android:name=".feature.presentation.Main.MainPageActivity"
-            android:exported="false">
-
-        </activity>
-        <activity
             android:name=".core.base.BaseActivity"
             android:exported="false" />
         <activity
