@@ -2,6 +2,7 @@ package com.rup.map
 
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
 
@@ -11,6 +12,22 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
         get() = ActivityMapBinding::inflate
 
     override fun setup() {
+        viewModel.mapMarker
+            .map {
+                viewModel.previousMapMarker to it
+            }
+            .observe(this)
+            { (previousMapMarker, currentMarker) ->
+                previousMapMarker.forEach {
+                    it.removeMapMarker()
+                }
+                binding.map.getMapAsync { naverMap ->
+                    currentMarker.forEach {
+                        it.build(naverMap)
+                    }
+                }
+            }
+        viewModel.setMapMarker()
     }
 
     override val viewModel: MapViewModel
