@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding
+import com.rup.feature.presentation.Main.MainRecyclerViewAdapter
+import com.rup.feature.presentation.Main.model.maindto
 import com.rup.feature.presentation.dialogs.LoadingDialog
 
 
@@ -58,4 +60,5 @@ abstract class BaseBindingActivity<VB : ViewBinding, VM : BaseViewModel> : BaseA
         _binding = null
         super.onDestroy()
     }
+
 }

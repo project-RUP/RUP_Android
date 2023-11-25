@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rup.databinding.ItemMainBinding
 import com.rup.feature.presentation.Main.model.maindto
-
-class MainRecyclerViewAdapter(private var items: List<maindto>) : RecyclerView.Adapter<MainRecyclerViewAdapter.MainPageViewHolder>() {
+interface OnItemClickListener {
+    fun onItemClick(position: Int)
+}
+class MainRecyclerViewAdapter(private val listener: OnItemClickListener,private var items: List<maindto>) : RecyclerView.Adapter<MainRecyclerViewAdapter.MainPageViewHolder>() {
 
     class MainPageViewHolder(val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,6 +29,10 @@ class MainRecyclerViewAdapter(private var items: List<maindto>) : RecyclerView.A
             headcount.text = item.headCount
             location.text = item.location
             price.text = item.price
+
+            root.setOnClickListener {
+                listener.onItemClick(position)
+            }
         }
     }
 

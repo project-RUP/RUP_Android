@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".RUPApplication"
@@ -18,31 +20,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP">
-
         <activity
-            android:name=".feature.presentation.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.RUP">
+            android:name=".feature.presentation.Main.MakingAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Coin.CoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Promise.PromiseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.MainPage.MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.map.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.presentation.Main.MainPageActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+      
+      <activity
+            android:name=".feature.presentation.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.RUP"/>
 
         <activity
             android:name=".feature.presentation.Main.MainPageActivity"
             android:exported="false">
 
         </activity>
-
-        <activity
-            android:name=".map.MapActivity"
-            android:exported="false">
-        </activity>
-
         <activity
             android:name=".core.base.BaseActivity"
             android:exported="false" />
