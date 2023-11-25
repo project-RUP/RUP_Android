@@ -12,10 +12,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 object AuthModule {
 
     private val userAuthApi: UserAuthApi by lazy {
-        AuthModule.getUserRetrofit().create(UserAuthApi::class.java)
+        getUserRetrofit().create(UserAuthApi::class.java)
     }
 
-    val gson : Gson = GsonBuilder()
+    val gson: Gson = GsonBuilder()
         .setLenient()
         .create()
 

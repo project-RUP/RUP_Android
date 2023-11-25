@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding
 
 
-abstract class BaseBindingActivity<VB : ViewBinding, VM : BaseViewModel>() : BaseActivity() {
+abstract class BaseBindingActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivity() {
 
     private var _binding: ViewBinding? = null
     abstract val bindingInflater: (LayoutInflater) -> VB

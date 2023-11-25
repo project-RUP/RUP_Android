@@ -16,11 +16,11 @@ object AppModule {
         getRetrofit().create(RetrofitClient::class.java)
     }
 
-    val gson : Gson = GsonBuilder()
+    val gson: Gson = GsonBuilder()
         .setLenient()
         .create()
 
-    private fun getRetrofit():Retrofit{
+    private fun getRetrofit(): Retrofit {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY // 요청 및 응답 바디를 포함한 모든 정보를 로그로 출력
         }

@@ -12,9 +12,6 @@ import com.rup.feature.presentation.util.Screens
 
 open class BaseActivity :
     AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     private val requestActivity: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult() // StartActivityForResult 처리를 담당

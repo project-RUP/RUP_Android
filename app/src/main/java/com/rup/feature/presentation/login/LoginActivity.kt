@@ -17,6 +17,7 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginViewModel>(
 
     override fun setup() {
     }
+
     override val viewModel: LoginViewModel
         get() = ViewModelProvider(this).get(LoginViewModel::class.java)
 
@@ -33,7 +34,7 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding, LoginViewModel>(
             //textapi로 넘어오는 string을 token으로 저장
             viewModel.test()
             viewModel.result.observe(this, Observer {
-                Log.d("LoginActivity",it.toString())
+                Log.d("LoginActivity", it.toString())
             })
         }
     }

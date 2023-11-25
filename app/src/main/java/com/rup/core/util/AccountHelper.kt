@@ -16,6 +16,7 @@ object AccountHelper {
     fun initAccountManager(context: Context) {
         accountManager = AccountManager.get(context)
     }
+
     fun getAccountManager(): AccountManager? = accountManager
 
     fun getMyAccounts(): Array<out Account>? = accountManager?.getAccountsByType(MY_ACCOUNT_TYPE)
@@ -36,18 +37,21 @@ object AccountHelper {
      * 사용자 인증 토큰 설정
      * */
     fun setAuthToken(authToken: String?) {
-        Log.d("token",authToken.toString())
-        val accounts: Array<out Account>? = getMyAccounts()
-        val userAccount: Account = accounts!![0]
-        if (userAccount != null && !authToken.isNullOrEmpty()) {
-            accountManager?.setAuthToken(userAccount,userAccount.type, authToken)
+        Log.d("token", authToken.toString())
+        getMyAccounts()?.let { accounts ->
+            val userAccount: Account = accounts[0]
+            if (!authToken.isNullOrEmpty()) {
+                accountManager?.setAuthToken(userAccount, userAccount.type, authToken)
+            }
+        } ?: {
+            Log.e("setAuthToken", "getMyAccounts()")
         }
     }
 
     /**
      * 인증 토큰 요청하기
      * */
-    fun getAuthToken(activity: Activity) : String? {
+    fun getAuthToken(activity: Activity): String? {
         val accounts: Array<out Account>? = getMyAccounts()
         val account = accounts?.get(0)
         if (account != null) {
