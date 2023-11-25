@@ -14,6 +14,7 @@ import com.google.android.gms.location.LocationServices
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.CameraUpdate
+import com.rup.R
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
 import com.rup.feature.presentation.map.model.toLatLng
@@ -43,6 +44,26 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
             }
         }
 
+        binding.backArrow.setOnClickListener {
+            backScreen()
+        }
+
+        binding.avatar1.setImageResource(R.drawable.j)
+        binding.avatar2.setImageResource(R.drawable.p)
+        binding.avatar3.setImageResource(R.drawable.pp)
+
+        viewModel.promise.observe(this){
+            it?.let {
+                val result = it.result
+                with(binding){
+                    title1.text = result.name
+                    date.text = result.promiseTime
+                    lateFeeText.text = result.penalty.toString()
+                    verificationCode.text = "${result.inviteCode}(인증코드)"
+                }
+            }
+        }
+
         setNaverMap()
 
         if (ActivityCompat.checkSelfPermission(
@@ -60,8 +81,6 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
                 // Got last known location. In some rare situations this can be null.
                 location?.toLatLng()?.let { viewModel.setMapMarker(it) }
             }
-
-
     }
 
     private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
@@ -69,7 +88,6 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
         viewModel.mapMarker.map {
             viewModel.previousMapMarker to it
         }.observe(this) { (previousMapMarker, currentMarker) ->
-            Log.d("LOGEE", "setNaverMap:currentMarker $currentMarker")
             previousMapMarker.forEach {
                 it.removeMapMarker()
             }
