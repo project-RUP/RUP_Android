@@ -6,6 +6,7 @@ import com.rup.feature.presentation.map.model.MapMarker
 
 class MapViewModel: BaseViewModel() {
 
+    private lateinit var reservationId: String
     var previousMapMarker = emptyList<MapMarker>()
 
     private val _mapMakers = MutableLiveData(emptyList<MapMarker>())
@@ -27,5 +28,9 @@ class MapViewModel: BaseViewModel() {
             )
         )
         _mapMakers.value = newMapMarkers
+    }
+
+    fun setReservationId(id: String){
+        reservationId = id
     }
 }

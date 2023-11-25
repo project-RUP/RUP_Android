@@ -12,6 +12,7 @@ import com.naver.maps.map.CameraUpdate
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
 import com.rup.feature.presentation.map.model.toLatLng
+import java.io.Serializable
 
 class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
@@ -21,6 +22,12 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
         get() = ActivityMapBinding::inflate
 
     override fun setup() {
+        intent.getSerializableExtra(StartArgs.key, StartArgs::class.java)?.let { reservationId ->
+            Log.d("LOGEE", "setup: $reservationId")
+            viewModel.setReservationId(reservationId.id)
+        } ?: {
+            backScreen()
+        }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         binding.expandIcon.setOnClickListener {
@@ -41,28 +48,37 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
     private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
         viewModel.mapMarker.map {
-                viewModel.previousMapMarker to it
-            }.observe(this) { (previousMapMarker, currentMarker) ->
-                previousMapMarker.forEach {
-                    it.removeMapMarker()
-                }
-
-                currentMarker.forEach {
-                    it.build(this, naverMap)
-                }
-
-                CameraUpdate.fitBounds(
-                    LatLngBounds.from(
-                        currentMarker.map { it.toLatLng() }
-                        ),
-                    100
-                ).let {
-                    naverMap.moveCamera(it)
-                }
-
+            viewModel.previousMapMarker to it
+        }.observe(this) { (previousMapMarker, currentMarker) ->
+            previousMapMarker.forEach {
+                it.removeMapMarker()
             }
+
+            currentMarker.forEach {
+                it.build(this, naverMap)
+            }
+
+            CameraUpdate.fitBounds(
+                LatLngBounds.from(
+                    currentMarker.map { it.toLatLng() }
+                ),
+                100
+            ).let {
+                naverMap.moveCamera(it)
+            }
+
+        }
     }
 
     override val viewModel: MapViewModel
         get() = ViewModelProvider(this).get(MapViewModel::class.java)
+
+
+    data class StartArgs(
+        val id: String
+    ) : Serializable {
+        companion object {
+            val key = "MapActivity-key"
+        }
+    }
 }
