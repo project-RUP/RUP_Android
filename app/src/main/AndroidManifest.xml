@@ -9,6 +9,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".RUPApplication"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP"
         tools:targetApi="31">
+      
         <activity
             android:name=".feature.presentation.login.LoginActivity"
             android:exported="true"
@@ -25,20 +27,22 @@
             android:theme="@style/Theme.RUP">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".map.MapActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".core.base.BaseActivity"
-            android:exported="false" >
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
 
         <service
             android:name=".core.util.AuthenticatorService"
@@ -51,6 +55,11 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="dnoqf0zo8y" />
+
     </application>
 
 </manifest>
