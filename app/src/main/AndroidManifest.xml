@@ -40,9 +40,20 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+      
+      <activity
+            android:name=".feature.presentation.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.RUP"/>
+
+        <activity
+            android:name=".feature.presentation.Main.MainPageActivity"
+            android:exported="false">
+
         </activity>
         <activity
             android:name=".core.base.BaseActivity"
@@ -66,6 +77,20 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="dnoqf0zo8y" />
+
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="oauth"
+                    android:scheme="kakao6866af45323046a3b36f1292a9994240" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
