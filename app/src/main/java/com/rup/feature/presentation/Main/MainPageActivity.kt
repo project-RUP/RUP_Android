@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMainPageBinding
+import com.rup.feature.presentation.Coin.CoinActivity
 import com.rup.feature.presentation.Main.model.maindto
 import com.rup.feature.presentation.MainPage.MyPageActivity
 import com.rup.feature.presentation.map.MapActivity
@@ -31,7 +32,7 @@ class MainPageActivity : BaseBindingActivity<ActivityMainPageBinding, MainPageVi
         }
 
         binding.coinBtn.setOnClickListener{
-            moveIntent(PointActivity::class.java)
+            moveIntent(CoinActivity::class.java)
         }
 
         binding.fab.setOnClickListener(){
