@@ -26,9 +26,9 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener,private 
             subscription.text = item.subscription
             time.text = item.time
             time2.text = item.amPm
-            headcount.text = item.headCount
+            //headcount.text = item.headCount
             location.text = item.location
-            price.text = item.price
+            //price.text = item.price
 
             root.setOnClickListener {
                 listener.onItemClick(position)
