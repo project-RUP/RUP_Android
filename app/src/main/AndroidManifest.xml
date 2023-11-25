@@ -21,10 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP">
         <activity
-            android:name=".feature.presentation.point.PointActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".feature.presentation.MainPage.MyPageActivity"
+            android:exported="true" >   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -33,7 +32,7 @@
             android:name=".feature.presentation.map.MapActivity"
             android:exported="false"/>
         <activity
-            android:name=".map.MapActivity"
+            android:name=".feature.presentation.map.MapActivity"
             android:exported="false"/>
         <activity
             android:name=".core.base.BaseActivity"
