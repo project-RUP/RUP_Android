@@ -1,17 +1,17 @@
 package com.rup.feature.presentation.map
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.map
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.CameraAnimation
+import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.CameraUpdate
 import com.rup.core.base.BaseBindingActivity
 import com.rup.databinding.ActivityMapBinding
+import com.rup.feature.presentation.map.model.toLatLng
 
 class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
@@ -25,12 +25,10 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
         binding.expandIcon.setOnClickListener {
             if (binding.expandedMenu.visibility == View.VISIBLE) {
-                binding.expandedMenu.visibility =
-                    View.GONE
+                binding.expandedMenu.visibility = View.GONE
                 binding.expandIcon.animate().setDuration(200).rotation(180f)
             } else {
-                binding.expandedMenu.visibility =
-                    View.VISIBLE
+                binding.expandedMenu.visibility = View.VISIBLE
                 binding.expandIcon.animate().setDuration(200).rotation(0f)
             }
         }
@@ -42,12 +40,9 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
     }
 
     private fun setNaverMap() = binding.map.getMapAsync { naverMap ->
-        viewModel.mapMarker
-            .map {
+        viewModel.mapMarker.map {
                 viewModel.previousMapMarker to it
-            }
-            .observe(this)
-            { (previousMapMarker, currentMarker) ->
+            }.observe(this) { (previousMapMarker, currentMarker) ->
                 previousMapMarker.forEach {
                     it.removeMapMarker()
                 }
@@ -56,18 +51,15 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
                     it.build(this, naverMap)
                 }
 
-            }
-
-        viewModel.cameraAnnotation
-            .distinctUntilChanged()
-            .observe(this) {
-                it?.let { latLng ->
-                    CameraUpdate.scrollTo(latLng)
-                        .animate(CameraAnimation.Easing, 500)
-                        .let { cameraUpdate ->
-                            naverMap.moveCamera(cameraUpdate)
-                        }
+                CameraUpdate.fitBounds(
+                    LatLngBounds.from(
+                        currentMarker.map { it.toLatLng() }
+                        ),
+                    100
+                ).let {
+                    naverMap.moveCamera(it)
                 }
+
             }
     }
 

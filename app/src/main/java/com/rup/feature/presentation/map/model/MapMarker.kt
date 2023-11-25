@@ -43,6 +43,8 @@ data class MapMarker(
     fun removeMapMarker(){
         marker.map = null
     }
+
+
 }
 
-fun List<MapMarker>.calculateCenter() = LocationUtils.calculateCenter(this)
+fun MapMarker.toLatLng() = LatLng(this.lat, this.lng)
