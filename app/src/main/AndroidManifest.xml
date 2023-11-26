@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUP">
         <activity
+            android:name=".feature.presentation.login.NicknameActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.presentation.Main.MakingAppointmentActivity"
             android:exported="false" />
         <activity
@@ -37,19 +40,18 @@
             android:exported="false" />
         <activity
             android:name=".feature.presentation.Main.MainPageActivity"
-            android:exported="true">
+            android:exported="false"></activity>
+        <activity
+            android:name=".feature.presentation.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.RUP">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-      
-      <activity
-            android:name=".feature.presentation.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.RUP"/>
-
         <activity
             android:name=".core.base.BaseActivity"
             android:exported="false" />
@@ -78,14 +80,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="oauth"
+                <data
+                    android:host="oauth"
                     android:scheme="kakao6866af45323046a3b36f1292a9994240" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
