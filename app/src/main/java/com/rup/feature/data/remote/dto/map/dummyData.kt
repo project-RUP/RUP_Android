@@ -6,7 +6,7 @@ val Dummy =
     ResultXX(
         id = 6,
         name = "UMC 회의",
-        promiseTime = LocalDateTime.parse("2023-12-25T21:05:25.458").toString(),
+        promiseTime = "21:05:25.458",
         promiseDate = "2023-12-25",
         promiseHour = "21:05",
         leftDate = 29,
@@ -16,5 +16,5 @@ val Dummy =
         address = "수원시 매영로 18",
         inviteCode = "123123",
         authorName = "마루",
-        createdAt = LocalDateTime.parse("2023-11-26T06:06:39").toString()
+        createdAt = ""
     )
