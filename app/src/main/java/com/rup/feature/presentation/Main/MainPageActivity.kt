@@ -32,7 +32,7 @@ class MainPageActivity : BaseBindingActivity<ActivityMainPageBinding, MainPageVi
         }
 
         binding.coinBtn.setOnClickListener{
-            moveIntent(CoinActivity::class.java)
+            moveIntent(PointActivity::class.java)
         }
 
         binding.fab.setOnClickListener(){

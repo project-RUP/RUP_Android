@@ -24,6 +24,9 @@
             android:name=".feature.presentation.Main.MakingAppointmentActivity"
             android:exported="false" />
         <activity
+            android:name=".feature.presentation.point.PointActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.presentation.Coin.CoinActivity"
             android:exported="false" />
         <activity
