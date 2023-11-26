@@ -57,9 +57,12 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
                 val result = it.result
                 with(binding){
                     title1.text = result.name
+                    title2.text = "${result.leftDate}일 ${result.leftHour}시간 ${result.leftMinute}분"
                     date.text = result.promiseTime
                     lateFeeText.text = result.penalty.toString()
                     verificationCode.text = "${result.inviteCode}(인증코드)"
+                    place.text = result.address
+
                 }
             }
         }

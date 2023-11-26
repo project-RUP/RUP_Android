@@ -9,6 +9,7 @@ import com.rup.databinding.ActivityMainPageBinding
 import com.rup.feature.presentation.Coin.CoinActivity
 import com.rup.feature.presentation.Main.model.maindto
 import com.rup.feature.presentation.MainPage.MyPageActivity
+import com.rup.feature.presentation.Promise.PromiseActivity
 import com.rup.feature.presentation.map.MapActivity
 import com.rup.feature.presentation.point.PointActivity
 
@@ -36,7 +37,7 @@ class MainPageActivity : BaseBindingActivity<ActivityMainPageBinding, MainPageVi
         }
 
         binding.fab.setOnClickListener(){
-            moveIntent(MakingAppointmentActivity::class.java)
+            moveIntent(PromiseActivity::class.java)
         }
     }
 
