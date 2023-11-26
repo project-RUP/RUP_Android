@@ -48,8 +48,8 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
             backScreen()
         }
 
-        binding.avatar1.setImageResource(R.drawable.j)
-        binding.avatar2.setImageResource(R.drawable.p)
+        binding.avatar1.setImageResource(R.drawable.small_j)
+        binding.avatar2.setImageResource(R.drawable.small_p)
         binding.avatar3.setImageResource(R.drawable.pp)
 
         viewModel.promise.observe(this){

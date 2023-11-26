@@ -33,7 +33,7 @@ object NetworkModule {
         val originalRequest = chain.request()
 
         val modifiedRequest = originalRequest.newBuilder()
-            .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiQVVUSE9SSVRJRVMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImlhdCI6MTcwMDk0Nzc0NiwiZXhwIjoxNzAxMzA3NzQ2fQ.4WOxj7beW4ZCMyLp2GSUudgDVbvnYe0-TD6rREea8Sg")
+            .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiQVVUSE9SSVRJRVMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImlhdCI6MTcwMDk1NjQzNSwiZXhwIjoxNzAxMzE2NDM1fQ.ecCeVLB-k-uM3GR4VtBxbcXNqTPPgpscRu9pfgI1D3U")
             .build()
         chain.proceed(modifiedRequest)
     }
