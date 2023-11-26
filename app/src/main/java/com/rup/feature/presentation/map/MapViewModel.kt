@@ -7,10 +7,12 @@ import com.naver.maps.geometry.LatLng
 import com.rup.core.base.BaseViewModel
 import com.rup.di.AppModule.gson
 import com.rup.feature.data.remote.MapApi
+import com.rup.feature.data.remote.dto.map.Dummy
 import com.rup.feature.data.remote.dto.map.GetPromises
 import com.rup.feature.data.remote.dto.map.GetPromisesV2
 import com.rup.feature.data.remote.dto.map.MapApResult
 import com.rup.feature.data.remote.dto.map.MapApiPram
+import com.rup.feature.data.remote.dto.map.ResultXX
 import com.rup.feature.data.remote.dto.user.LoginRes
 import com.rup.feature.presentation.map.model.MapMarker
 import com.rup.network.NetworkModule
@@ -21,7 +23,7 @@ class MapViewModel: BaseViewModel() {
     private lateinit var reservationId: String
     var previousMapMarker = emptyList<MapMarker>()
 
-    private val _promise = MutableLiveData<GetPromisesV2?>(null)
+    private val _promise = MutableLiveData<ResultXX?>(null)
     val promise get() = _promise
 
     private val _mapMakers = MutableLiveData(emptyList<MapMarker>())
@@ -48,9 +50,7 @@ class MapViewModel: BaseViewModel() {
 
     fun setReservationId(id: String){
         viewModelScope.launch {
-            val promisesJson = remote.getPromises("2")
-            val newPromisesJson = gson.fromJson(promisesJson, GetPromisesV2::class.java)
-            _promise.value = newPromisesJson
+            _promise.value = Dummy
         }
     }
 }

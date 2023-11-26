@@ -54,7 +54,7 @@ class MapActivity : BaseBindingActivity<ActivityMapBinding, MapViewModel>() {
 
         viewModel.promise.observe(this){
             it?.let {
-                val result = it.result
+                val result = it
                 with(binding){
                     title1.text = result.name
                     title2.text = "${result.leftDate}일 ${result.leftHour}시간 ${result.leftMinute}분"
