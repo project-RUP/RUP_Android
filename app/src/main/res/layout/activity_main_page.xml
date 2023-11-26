@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/outline_monetization_on_24"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/invitationcode_btn"
+        app:layout_constraintRight_toLeftOf="@+id/profile"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="180dp"/>
 
@@ -111,11 +111,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/deposit" />
 
 
