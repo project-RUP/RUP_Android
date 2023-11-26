@@ -1,4 +1,6 @@
 package com.rup.feature.presentation.Promise
 
-class PromiseViewModel {
+import com.rup.core.base.BaseViewModel
+
+class PromiseViewModel: BaseViewModel() {
 }

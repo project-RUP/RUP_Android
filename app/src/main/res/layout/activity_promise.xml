@@ -6,12 +6,233 @@
     android:layout_height="match_parent"
     tools:context=".feature.presentation.Promise.PromiseActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="promise"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/arrow_back_ios"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/promise_name"
+        style="@style/EditTextTheme"
+        android:text="약속만들기"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/back_arrow" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/black01"
+        app:layout_constraintTop_toBottomOf="@id/promise_name"
+        app:layout_goneMarginTop="6dp" />
+
+    <ImageView
+        android:id="@+id/time_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/schedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:tint="@color/green01" />
+
+    <TextView
+        style="@style/TextStyle.sh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="약속 시간"
+        android:textColor="@color/green01"
+        app:layout_constraintBottom_toBottomOf="@id/time_icon"
+        app:layout_constraintStart_toEndOf="@id/time_icon"
+        app:layout_constraintTop_toTopOf="@id/time_icon" />
+
+    <TextView
+        android:id="@+id/time_text"
+        style="@style/TextStyle.h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="02  :  00  AM"
+        android:textColor="@color/black09"
+        app:layout_constraintBottom_toBottomOf="@id/time_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_icon" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/black03"
+        app:layout_constraintTop_toBottomOf="@id/time_icon" />
+
+    <ImageView
+        android:id="@+id/calendar_today"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/calendar_today"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:tint="@color/green01" />
+
+    <TextView
+        style="@style/TextStyle.sh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="약속 날짜"
+        android:textColor="@color/green01"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_today"
+        app:layout_constraintStart_toEndOf="@id/calendar_today"
+        app:layout_constraintTop_toTopOf="@id/calendar_today" />
+
+    <TextView
+        style="@style/TextStyle.h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="2023 . 11 . 25"
+        android:textColor="@color/black09"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_today"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/calendar_today" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/black03"
+        app:layout_constraintTop_toBottomOf="@id/calendar_today" />
+
+    <ImageView
+        android:id="@+id/place"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/place"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider3"
+        app:tint="@color/green01" />
+
+    <TextView
+        style="@style/TextStyle.sh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="약속 장소"
+        android:textColor="@color/green01"
+        app:layout_constraintBottom_toBottomOf="@id/place"
+        app:layout_constraintStart_toEndOf="@id/place"
+        app:layout_constraintTop_toTopOf="@id/place" />
+
+    <TextView
+        style="@style/TextStyle.h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="ㅇㅇ구 ㅇㅇ동 ㅇㅇㅇ"
+        android:textColor="@color/black09"
+        app:layout_constraintBottom_toBottomOf="@id/place"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/place" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/black03"
+        app:layout_constraintTop_toBottomOf="@id/place" />
+
+
+    <ImageView
+        android:id="@+id/monetization"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/monetization"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider4"
+        app:tint="@color/green01" />
+
+    <TextView
+        style="@style/TextStyle.sh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="지각비"
+        android:textColor="@color/green01"
+        app:layout_constraintBottom_toBottomOf="@id/monetization"
+        app:layout_constraintStart_toEndOf="@id/monetization"
+        app:layout_constraintTop_toTopOf="@id/monetization" />
+
+    <EditText
+        style="@style/TextStyle.h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:inputType="number"
+        android:text="10,000"
+        android:textColor="@color/black09"
+        app:layout_constraintBottom_toBottomOf="@id/monetization"
+        app:layout_constraintEnd_toStartOf="@id/won"
+        app:layout_constraintTop_toTopOf="@id/monetization" />
+
+    <TextView
+        android:id="@+id/won"
+        style="@style/TextStyle.h3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="원"
+        android:textColor="@color/black09"
+        app:layout_constraintBottom_toBottomOf="@id/monetization"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/monetization" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/black03"
+        app:layout_constraintTop_toBottomOf="@id/monetization" />
+
+    <Button
+        style="@style/TextStyle.h3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/radius_8_green_02"
+        android:text="예약 만들기"
+        android:textColor="@color/black10"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

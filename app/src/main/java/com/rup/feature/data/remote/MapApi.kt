@@ -13,4 +13,9 @@ interface MapApi {
         @Path(value = "promiseId") promiseId: String,
         @Body mapApiPram: MapApiPram
     ): JsonElement
+
+    @POST("/v1/promises/{promiseId}")
+    suspend fun getPromises(
+        @Path("promiseId") promiseId: String,
+    ): JsonElement
 }

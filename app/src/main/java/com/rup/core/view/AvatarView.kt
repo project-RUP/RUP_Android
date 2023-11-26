@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.rup.R
 import com.rup.databinding.AvatarViewBinding
@@ -39,6 +40,14 @@ class AvatarView : FrameLayout {
         Glide
             .with(context)
             .load(url)
+            .centerCrop()
+            .into(binding.avatar)
+    }
+
+    fun setImageResource(@DrawableRes id: Int){
+        Glide
+            .with(context)
+            .load(id)
             .centerCrop()
             .into(binding.avatar)
     }

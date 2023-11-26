@@ -12,27 +12,27 @@ class PointViewModel : BaseViewModel() {
     fun getPointHistory() {
         val newPointHistoryItem = listOf(
             PointHistoryItem(
-                "1",
-                "1",
-                "1",
-                "1",
+                "+2000",
+                "레온PC방",
+                "상강사거리",
+                "2024.11.26",
             ),
             PointHistoryItem(
-                "2",
-                "2",
-                "2",
-                "2",
+                "+4000",
+                "레온PC방",
+                "상강사거리",
+                "2024.11.25",
             ),
             PointHistoryItem(
-                "3",
-                "3",
-                "3",
-                "3",
+                "+1000",
+                "레온PC방",
+                "상강사거리",
+                "2024.11.24",
             ), PointHistoryItem(
-                "4",
-                "4",
-                "4",
-                "4",
+                "+500",
+                "레온PC방",
+                "상강사거리",
+                "2024.11.23",
             )
         )
         _pointHistory.value = newPointHistoryItem
