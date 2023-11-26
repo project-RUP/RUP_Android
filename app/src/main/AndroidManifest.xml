@@ -43,17 +43,18 @@
             android:exported="false" />
         <activity
             android:name=".feature.presentation.Main.MainPageActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".feature.presentation.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.RUP">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".feature.presentation.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.RUP">
         </activity>
         <activity
             android:name=".core.base.BaseActivity"
